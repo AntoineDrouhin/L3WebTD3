@@ -1,0 +1,116 @@
+<div ng-show="toDisplay" id="resume">
+
+    <div id="entete" layout="row" layout-align="start start" flex>
+
+        <img ng-if="person.photo" ng-src="images/candidate/{{person.photo}}" alt="{{person.name}}" style="width:100px;height: 100px"/>
+        <img ng-if="!person.photo" ng-src="{{defaultAvatar}}" alt="Default" style="width:100px;height: 100px"/>
+
+        <div flex></div>
+
+        <div id="coord" layout="column" layout-align="end start">
+
+            <h2>{{person.name}}</h2>
+
+            <coordonnee-person coordonnee="person.contact"></coordonnee-person>
+
+        </div>
+
+    </div>
+
+    <h1>{{resume.resume.title}}</h1>
+
+    <div ng-if="resume.extra" class="extra">
+        {{resume.resume.extra}}
+    </div>
+
+    <div ng-if="resume.experiences">
+
+        <h3 class="activeClick">Experiences Professionnelles</h3>
+
+        <div class="resume_block">
+
+            <div class="resume_line" ng-repeat="exp in resume.experiences | orderBy : orderFn : -1 " layout="row" layout-align="start start">
+
+                <div class="date" flex="15">
+                    {{exp.start | momentFormat: 'MMM YYYY'}} - <span ng-if="exp.end"> {{exp.end | momentFormat: 'MMM YYYY'}} </span>  <span ng-if="!exp.end">Aujourd'hui</span>
+                </div>
+
+                <div flex="5"></div>
+
+                <div class="content_cv" layout="column"  flex="80">
+                    <h4>{{exp.title}}</h4>
+                    <h5>{{exp.company}} - {{exp.location}}</h5>
+                    <ul>
+                        <li ng-repeat="detail in exp.description">{{detail}}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-if="resume.educations">
+        <h3>Formations</h3>
+
+        <div class="resume_block">
+
+            <div class="resume_line" ng-repeat="formation in resume.educations | orderBy : orderFn : -1" layout="row" layout-align="start start">
+
+                <div class="date" flex="15">
+                    {{formation.start | momentFormat: 'MMM YYYY'}} <span ng-if="exp.end"> - {{formation.end | momentFormat: 'MMM YYYY'}} </span>
+                </div>
+
+                <div flex="5"></div>
+
+                <div class="content_cv" layout="column"  flex="80">
+                    <h4>{{formation.title}}</h4>
+                    <h5>{{formation.school}} - {{formation.location}}</h5>
+                    <ul>
+                        <li ng-repeat="detail in formation.description">{{detail}}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-if="resume.competencies">
+
+        <h3>Competences</h3>
+
+        <div class="resume_block">
+
+            <div class="free_line" ng-repeat="competence in resume.competencies">
+                <h4>{{competence.type}}</h4>
+
+                <div layout="row" layout-padding layout-margin layout-wrap layout-align="start start">
+                    <div flex="nogrow" ng-repeat="content in competence.content | orderBy : '-level'" class="content">
+                        {{content.label}} <em ng-if="content.level">{{content.level | levelFormat}}</em>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-if="resume.hobbies">
+
+        <h3>Loisirs</h3>
+
+        <div class="resume_block">
+
+            <div class="free_line" ng-repeat="hobby in resume.hobbies">
+                <h4>{{hobby.type}}</h4>
+                <div layout="row" layout-padding layout-margin layout-wrap layout-align="start start">
+                    <div flex="nogrow" ng-repeat="content in hobby.content " class="content" ng-if="content.label">
+                        {{content.label}} <em ng-if="content.detail">{{content.detail}}</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
