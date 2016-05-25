@@ -38,5 +38,4 @@ jspm_packages
 
 # idea
 .iws
-.idea/workspace.xml
-.idea/task.xmls
+.idea/

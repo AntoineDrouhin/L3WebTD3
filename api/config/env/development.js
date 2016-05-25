@@ -13,10 +13,11 @@ module.exports = {
     // ---- Database configuration
     db	: {
         module  : 'mongoDB',
-        link      : "mongodb://localhost/myResume"
+        link      : "mongodb://163.172.150.53:27017/td2"
     },
 
     // ---- Params Allowed Origins by environment
     allowedOrigins : [ 'localhost:*', '0.0.0.0:*','127.0.0.1:*']
 };
+
 
