@@ -77,7 +77,7 @@ ResumeController.findResume = function(req, res, next, id){
             })
             //Geoffrey :
             // --- Load the contact associated
-            Contact.findOne({_id : resume.contact}).exec(function(err, person){
+            Contact.findOne({_id : resume.contact}).exec(function(err, contact){
                 resume.contact = contact;
                 req.current_resume = resume;
                 next();
