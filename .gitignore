@@ -39,3 +39,6 @@ jspm_packages
 # idea
 .iws
 .idea/
+
+#Bower / Angular 
+web/bower_components/

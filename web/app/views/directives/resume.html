@@ -24,28 +24,9 @@
     </div>
 
     <div ng-if="resume.experiences">
-
         <h3 class="activeClick">Experiences Professionnelles</h3>
-
         <div class="resume_block">
-
-            <div class="resume_line" ng-repeat="exp in resume.experiences | orderBy : orderFn : -1 " layout="row" layout-align="start start">
-
-                <div class="date" flex="15">
-                    {{exp.start | momentFormat: 'MMM YYYY'}} - <span ng-if="exp.end"> {{exp.end | momentFormat: 'MMM YYYY'}} </span>  <span ng-if="!exp.end">Aujourd'hui</span>
-                </div>
-
-                <div flex="5"></div>
-
-                <div class="content_cv" layout="column"  flex="80">
-                    <h4>{{exp.title}}</h4>
-                    <h5>{{exp.company}} - {{exp.location}}</h5>
-                    <ul>
-                        <li ng-repeat="detail in exp.description">{{detail}}</li>
-                    </ul>
-                </div>
-            </div>
-
+            <xp ng-repeat="exp in resume.experiences | orderBy : orderFn : -1 "></xp>
         </div>
     </div>
 
@@ -53,24 +34,7 @@
         <h3>Formations</h3>
 
         <div class="resume_block">
-
-            <div class="resume_line" ng-repeat="formation in resume.educations | orderBy : orderFn : -1" layout="row" layout-align="start start">
-
-                <div class="date" flex="15">
-                    {{formation.start | momentFormat: 'MMM YYYY'}} <span ng-if="exp.end"> - {{formation.end | momentFormat: 'MMM YYYY'}} </span>
-                </div>
-
-                <div flex="5"></div>
-
-                <div class="content_cv" layout="column"  flex="80">
-                    <h4>{{formation.title}}</h4>
-                    <h5>{{formation.school}} - {{formation.location}}</h5>
-                    <ul>
-                        <li ng-repeat="detail in formation.description">{{detail}}</li>
-                    </ul>
-                </div>
-            </div>
-
+            <xp ng-repeat="exp in resume.educations | orderBy : orderFn : -1 "></xp>
         </div>
     </div>
 
