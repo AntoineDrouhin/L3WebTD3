@@ -16,7 +16,8 @@ var MessageSchema = new Schema({
     "messages" : [{
         "nom" : String,
         "date": String,
-        "contenuMessage" : String
+        "textMessage" : String,
+        "idCv": String
     }]
 
 });

@@ -53,9 +53,6 @@ var ResumeSchema = new Schema({
 
     "extra" : String,
 
-    // --- Relation with a message
-     message : {type : Schema.Types.ObjectId, ref: 'Message'}
-
 
 });
 
