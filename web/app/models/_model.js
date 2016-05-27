@@ -204,7 +204,7 @@ angular.module('myResumeApp')
         };
         /**
          * Do something after the creation
-         */
+          */
         model.prototype.postUpdate = function(){
             // ---- Do something after creation
         };
