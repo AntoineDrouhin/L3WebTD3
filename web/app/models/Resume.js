@@ -5,17 +5,13 @@ angular.module('myResumeApp')
 
         var Resume = function Resume (element) {
             
-            var model = Model.call(this, element, 'resume');
+            Model.call(this, element, 'resume');
             this.uri = ConfigResumeApp.getUri('uri_resume');
 
 
-
-            debugger;
-            Model.set(element);
-            debugger;
             // ---- SCHEMA DEFINITION
             if(element) {
-                this._id        = element._id;
+                this.id        = element._id;
                 this.person    = element.person;
                 this.title     = element.title;
 
