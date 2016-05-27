@@ -43,13 +43,11 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
         var myPerson  = new Person(raw.person);
         myPerson.contact.address = myAddress;
 
-        // -- message
-        var myMessage = new Message(raw.message);
 
         // -- Resume
         var myResume = new Resume(raw.resume);
         myResume.person = myPerson;
-        myResume.message = myMessage;
+
 
 
         // ------- Record asynchronous all information into database
@@ -63,13 +61,6 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
 
             person : function(callbackRecord){
                 myPerson.save(function(err, result){
-                    callbackRecord(err, result);
-                })
-            },
-
-
-            message : function(callbackRecord) {
-                myMessage.save(function (err, result) {
                     callbackRecord(err, result);
                 })
             },

@@ -8,7 +8,7 @@ var ResumeController = exports;
 var mongoose 	= require('mongoose'),
     Resume 		= mongoose.model('Resume'),
     Person 		= mongoose.model('Person'),
-    Contact 	= mongoose.model('Contact'),
+    Message 	= mongoose.model('Message'),
     moment      = require('moment'),
     Util        = require('../helpers/appUtils'),
     async       = require('async'),
@@ -34,7 +34,7 @@ ResumeController.getAll = function(req, res){
                 // --- Treatment about resume formatted
                 resultsFormatted.push({
                     person : result.person,
-                    contact: result.contact,
+                    message: result.message,
                     title  : result.title,
                     _id    : result._id
                 });

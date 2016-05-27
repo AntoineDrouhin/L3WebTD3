@@ -13,12 +13,10 @@ var mongoose 	= require('mongoose'),
 //------------------------------------------- Contact Schema
 var MessageSchema = new Schema({
 
-    "messages" : [{
-        "nom" : String,
-        "date": String,
-        "textMessage" : String,
-        "idCv": String
-    }]
+    "nom" : String,
+    "date": String,
+    "textMessage" : String,
+    "resume": { type : Schema.Types.ObjectId, ref: 'Resume' }
 
 });
 

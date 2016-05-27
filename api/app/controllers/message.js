@@ -49,3 +49,34 @@ MessageController.getMessage = function(req, res){
 
     res.status(200).json(req.current_message)
 };
+
+MessageController.insertMessage = function(req, res) {
+    Util.info('Insert message');
+
+    var post = new Message({
+        "nom" : "toto",
+        "date": "today",
+        "textMessage" : "Peter la guele",
+        "resume" : "bite"
+    });
+
+    post.save(function(err) {
+        if(err){
+            res.status(400).json({message : "Error saving message"});
+        }
+
+        else {
+            res.status(200).json({message : "Ok saving message"});
+        }
+    });
+
+    
+
+
+}
+
+MessageController.ok = function(err, numAffected) {
+    Util.info(err);
+    Util.info(numAffected);
+}
+
