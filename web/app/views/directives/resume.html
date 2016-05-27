@@ -39,42 +39,16 @@
     </div>
 
     <div ng-if="resume.competencies">
-
         <h3>Competences</h3>
-
         <div class="resume_block">
-
-            <div class="free_line" ng-repeat="competence in resume.competencies">
-                <h4>{{competence.type}}</h4>
-
-                <div layout="row" layout-padding layout-margin layout-wrap layout-align="start start">
-                    <div flex="nogrow" ng-repeat="content in competence.content | orderBy : '-level'" class="content">
-                        {{content.label}} <em ng-if="content.level">{{content.level | levelFormat}}</em>
-                    </div>
-                </div>
-
-            </div>
+            <hobcomp ng-repeat="obj in resume.competencies"></hobcomp>
         </div>
-
     </div>
 
     <div ng-if="resume.hobbies">
-
         <h3>Loisirs</h3>
-
         <div class="resume_block">
-
-            <div class="free_line" ng-repeat="hobby in resume.hobbies">
-                <h4>{{hobby.type}}</h4>
-                <div layout="row" layout-padding layout-margin layout-wrap layout-align="start start">
-                    <div flex="nogrow" ng-repeat="content in hobby.content " class="content" ng-if="content.label">
-                        {{content.label}} <em ng-if="content.detail">{{content.detail}}</em>
-                    </div>
-                </div>
-            </div>
+            <hobcomp ng-repeat="obj in resume.hobbies"></hobcomp>
         </div>
-
     </div>
-
-
 </div>
