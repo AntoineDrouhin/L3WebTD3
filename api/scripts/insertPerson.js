@@ -15,13 +15,13 @@ var fs 				= require('fs'),
 var person          = require('../app/models/Person'),
     address         = require('../app/models/Address'),
     resume          = require('../app/models/Resume'),
-    contact         = require('../app/models/Contact');
+    message         = require('../app/models/Message');
 
 
 var Person          = mongoose.model('Person'),
     Address         = mongoose.model('Address'),
     Resume          = mongoose.model('Resume'),
-    Contact          = mongoose.model('Contact');
+    Message          = mongoose.model('Message');
 
 // -------- Connect to database
 var database = mongoose.connect(config.db.link);
@@ -38,18 +38,18 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
 
         // ------- Create Object Associated
         // -- Address
-        var myAddress = new Address(raw.person.contact.address);
+        var myAddress = new Address(raw.person.message.address);
         // -- Person
         var myPerson  = new Person(raw.person);
-        myPerson.contact.address = myAddress;
+        myPerson.message.address = myAddress;
 
-        // -- Contact
-        var myContact = new Contact(raw.contact);
+        // -- message
+        var myMessage = new Message(raw.message);
 
         // -- Resume
         var myResume = new Resume(raw.resume);
         myResume.person = myPerson;
-        myResume.contact = myContact;
+        myResume.message = myMessage;
 
 
         // ------- Record asynchronous all information into database
@@ -68,8 +68,8 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
             },
 
 
-            contact : function(callbackRecord) {
-                myContact.save(function (err, result) {
+            message : function(callbackRecord) {
+                myMessage.save(function (err, result) {
                     callbackRecord(err, result);
                 })
             },

@@ -11,14 +11,14 @@ var mongoose 	= require('mongoose'),
     moment      = require('moment');
 
 //------------------------------------------- Contact Schema
-var ContactSchema = new Schema({
+var MessageSchema = new Schema({
 
-    "contacts" : [{
+    "messages" : [{
         "nom" : String,
         "date": String,
-        "message" : String
+        "contenuMessage" : String
     }]
 
 });
 
-mongoose.model('Contact', ContactSchema);
+mongoose.model('Message', MessageSchema);

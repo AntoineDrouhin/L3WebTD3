@@ -55,14 +55,14 @@ async.parallel({
         })
     },
 
-    // ---- TREATMENT ON TABLE CONTACT [ same as address ]
-    contact : function(callback){
+    // ---- TREATMENT ON TABLE Message [ same as address ]
+    message : function(callback){
 
-        var contact = require('../app/models/Contact'),
-            Contact = mongoose.model('Contact');
+        var message = require('../app/models/Message'),
+            Message = mongoose.model('Message');
 
-        Contact.remove({}).exec(function(err, result){
-            console.log('Clean all Contact');
+        Message.remove({}).exec(function(err, result){
+            console.log('Clean all Message');
             callback(null, 'done');
 
         })
