@@ -14,11 +14,14 @@ var fs 				= require('fs'),
 // --- Model associated
 var person          = require('../app/models/Person'),
     address         = require('../app/models/Address'),
-    resume          = require('../app/models/Resume');
+    resume          = require('../app/models/Resume'),
+    contact         = require('../app/models/Contact');
+
 
 var Person          = mongoose.model('Person'),
     Address         = mongoose.model('Address'),
-    Resume          = mongoose.model('Resume');
+    Resume          = mongoose.model('Resume'),
+    Contact          = mongoose.model('Contact');
 
 // -------- Connect to database
 var database = mongoose.connect(config.db.link);
@@ -40,9 +43,13 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
         var myPerson  = new Person(raw.person);
         myPerson.contact.address = myAddress;
 
+        // -- Contact
+        var myContact = new Contact(raw.contact);
+
         // -- Resume
         var myResume = new Resume(raw.resume);
         myResume.person = myPerson;
+        myResume.contact = myContact;
 
 
         // ------- Record asynchronous all information into database
@@ -56,6 +63,13 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
 
             person : function(callbackRecord){
                 myPerson.save(function(err, result){
+                    callbackRecord(err, result);
+                })
+            },
+
+
+            contact : function(callbackRecord) {
+                myContact.save(function (err, result) {
                     callbackRecord(err, result);
                 })
             },

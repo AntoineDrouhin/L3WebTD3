@@ -53,6 +53,19 @@ async.parallel({
             callback(null, 'done');
 
         })
+    },
+
+    // ---- TREATMENT ON TABLE CONTACT [ same as address ]
+    contact : function(callback){
+
+        var contact = require('../app/models/Contact'),
+            Contact = mongoose.model('Contact');
+
+        Contact.remove({}).exec(function(err, result){
+            console.log('Clean all Contact');
+            callback(null, 'done');
+
+        })
     }
 
 },function(err, results){

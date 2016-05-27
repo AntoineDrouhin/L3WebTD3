@@ -8,6 +8,7 @@ var ResumeController = exports;
 var mongoose 	= require('mongoose'),
     Resume 		= mongoose.model('Resume'),
     Person 		= mongoose.model('Person'),
+    Contact 	= mongoose.model('Contact'),
     moment      = require('moment'),
     Util        = require('../helpers/appUtils'),
     async       = require('async'),
