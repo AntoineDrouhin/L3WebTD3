@@ -38,7 +38,7 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
 
         // ------- Create Object Associated
         // -- Address
-        var myAddress = new Address(raw.person.message.address);
+        var myAddress = new Address(raw.person.contact.address);
         // -- Person
         var myPerson  = new Person(raw.person);
         myPerson.contact.address = myAddress;
