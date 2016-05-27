@@ -41,7 +41,7 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
         var myAddress = new Address(raw.person.message.address);
         // -- Person
         var myPerson  = new Person(raw.person);
-        myPerson.message.address = myAddress;
+        myPerson.contact.address = myAddress;
 
         // -- message
         var myMessage = new Message(raw.message);
