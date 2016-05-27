@@ -4,12 +4,18 @@ angular.module('myResumeApp')
     .factory('Resume', function (ConfigResumeApp, $filter, Model) {
 
         var Resume = function Resume (element) {
-            Model.call(this, element, 'resume');
+            
+            var model = Model.call(this, element, 'resume');
             this.uri = ConfigResumeApp.getUri('uri_resume');
 
+
+
+            debugger;
+            Model.set(element);
+            debugger;
             // ---- SCHEMA DEFINITION
             if(element) {
-                this.id        = element._id;
+                this._id        = element._id;
                 this.person    = element.person;
                 this.title     = element.title;
 
