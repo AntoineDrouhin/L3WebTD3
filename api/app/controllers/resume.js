@@ -34,6 +34,7 @@ ResumeController.getAll = function(req, res){
                 // --- Treatment about resume formatted
                 resultsFormatted.push({
                     person : result.person,
+                    contact: result.contact,
                     title  : result.title,
                     _id    : result._id
                 });
@@ -74,8 +75,13 @@ ResumeController.findResume = function(req, res, next, id){
                 req.current_resume = resume;
                 next();
             })
-
-
+            //Geoffrey :
+            // --- Load the contact associated
+            Contact.findOne({_id : resume.contact}).exec(function(err, person){
+                resume.contact = contact;
+                req.current_resume = resume;
+                next();
+            })
 
         }
     })

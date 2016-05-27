@@ -15,6 +15,7 @@ var ContactSchema = new Schema({
 
     "contacts" : [{
         "nom" : String,
+        "date": String,
         "message" : String
     }]
 
