@@ -54,10 +54,10 @@ MessageController.insertMessage = function(req, res) {
     Util.info('Insert message');
 
     var post = new Message({
-        "nom" : "toto",
-        "date": "today",
-        "textMessage" : "Peter la guele",
-        "resume" : "bite"
+        "nom" : req.params.name,
+        "date": moment().format('MM/DD/YYYY'),
+        "textMessage" : req.params.msg,
+        "resume" : req.params.resume
     });
 
     post.save(function(err) {

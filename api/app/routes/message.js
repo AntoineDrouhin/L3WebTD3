@@ -9,7 +9,7 @@ module.exports = function(router) {
     var messageController = require('../controllers/message');
 
     // -------- Retrieve all person from the database
-    router.get('/message',  messageController.insertMessage);
+    router.get('/message/:resume/:name/:msg',  messageController.insertMessage);
 
 
 };
