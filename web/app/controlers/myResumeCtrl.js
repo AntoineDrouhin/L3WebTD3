@@ -14,8 +14,11 @@ angular.module('myResumeApp')
         });
 
         $scope.displayResume = function(resume){
+            var person = angular.copy(resume.person);
             resume.fetch().then(function(){
                 $scope.current_resume = resume;
+                $scope.current_resume.person = person;
+
             })
         };
 
