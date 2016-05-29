@@ -11,34 +11,45 @@ var MessageController = exports;
 var mongoose 	= require('mongoose'),
     Message 	= mongoose.model('Message'),
     moment      = require('moment'),
-    Util        = require('../helpers/appUtils');
+    Util        = require('../helpers/appUtils'),
+    async       = require('async'),
+    _           = require('lodash');
 
 
 /**
- * Find a specific message from database
+ * Load all message with resume id
  * @param req
  * @param res
- * @param next
- * @param id
  */
-MessageController.findMessage = function(req, res, next, id){
+MessageController.getAll = function(req, res){
 
-    Util.info('Find message '+ id);
+    Util.info('Load all Message for resume '+req.params.resumeId);
 
-    Person.findOne({_id : id}).exec(function(err, person){
-        // --- Manage error
+    Message.find({resume : req.params.resumeId}).exec(function(err, results){
         if(err){
-            res.status(400).json({message : "Error Loading message"});
-        }
-        // --- Maybe no one found
-        if(!message){
-            res.status(404).json({message : "Message not found"});
+            res.status(400).json({message : "Error Loading Message"})
         }else{
-            req.current_message = message;
-            next();
+            var resultsFormatted = [];
+
+            async.forEach(results, function(result, callback){
+
+                // --- Treatment about message formatted
+                resultsFormatted.push({
+                    nom : result.nom,
+                    date: result.date,
+                    textMessage  : result.textMessage
+                });
+
+                callback();
+
+            },function(){
+                res.status(200).json(resultsFormatted)
+            })
+
         }
     })
 };
+
 /**
  * Return message detail
  * @param req
@@ -74,6 +85,9 @@ MessageController.insertMessage = function(req, res) {
 
 
 }
+
+
+
 
 MessageController.ok = function(err, numAffected) {
     Util.info(err);
