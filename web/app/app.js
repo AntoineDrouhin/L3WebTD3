@@ -16,6 +16,7 @@ angular.module('myResumeApp',[
         api_route  :'http://localhost:3000',
         uri_resume : '/resumes',
         uri_person : '/people',
-        uri_contact : '/contact'
+        uri_contact : '/contact',
+        uri_message : '/message'
 
     });

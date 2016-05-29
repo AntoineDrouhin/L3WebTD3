@@ -29,7 +29,6 @@
         <div flex></div>
 
     </div>
-
     <!-- Action to hide or not Resume -->
     <div layout="column">
         <md-button ng-click="hide()" class="md-icon-button" id="hide" aria-label="Masquer sidenav">
@@ -39,7 +38,9 @@
             <md-icon md-svg-src="images/icons/ic_keyboard_arrow_right_black_24px.svg"></md-icon>
         </md-button>
     </div>
-
+    <md-button ng-if="current_resume" class="md-primary md-raised" ng-click="showAdvanced(current_resume.id)" style="z-index:1000000000;position:absolute;right : 10px; top: 10px">
+        Contactez moi !
+    </md-button>
     <!-- Display resume -->
     <resume cv="current_resume" flex="auto" style="height:100%; overflow: auto"></resume>
 
