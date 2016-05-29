@@ -99,3 +99,11 @@ h4.subText{
 .content em{
     font-size: 0.8em;
 }
+#nav_messages{
+    
+    float:right;
+    width:20%;
+    z-index:1000000000;
+    position:relative;
+    height:100%;
+}

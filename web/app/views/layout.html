@@ -38,12 +38,24 @@
             <md-icon md-svg-src="images/icons/ic_keyboard_arrow_right_black_24px.svg"></md-icon>
         </md-button>
     </div>
-    <md-button ng-if="current_resume" class="md-primary md-raised" ng-click="showAdvanced(current_resume.id)" style="z-index:1000000000;position:absolute;right : 10px; top: 10px">
-        Contactez moi !
-    </md-button>
+
+    
     <!-- Display resume -->
     <resume cv="current_resume" flex="auto" style="height:100%; overflow: auto"></resume>
-
-    <message message="current_message" flex="auto" style="height: 100%; overflow: auto"></message>
-
+    <div id="nav_messages">
+        <md-button ng-if="current_resume" class="md-primary md-raised" ng-click="showAdvanced(current_resume.id)">
+            Contactez moi !
+        </md-button>
+        <md-list class="md-dense" ng-if="current_resume" resumeID="current_resume.id" flex>
+            <md-subheader class="md-no-sticky">Liste des messages</md-subheader>
+            <!--<md-list-item class="md-3-line" ng-repeat="msg in message">-->
+            <md-list-item class="md-3-line" ng-repeat="msg in message" ng-if="message.resume = resumeID">
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{message.nom}}</h3>
+                    <h4>{{message.date}}</h4>
+                    <p>{{message.text}}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </div>
 </div>

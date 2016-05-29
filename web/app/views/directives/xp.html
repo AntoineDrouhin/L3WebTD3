@@ -11,7 +11,7 @@
         <h5 ng-if="exp.company">{{exp.company}} - {{exp.location}}</h5>
         <h5 ng-if="exp.school">{{exp.school}} - {{exp.location}}</h5>
         <ul>
-            <li ng-repeat="det in exp.description">{{det}}</li>
+            <li ng-repeat="det in exp.description track by $index">{{det}}</li>
         </ul>
     </div>
 </div>
