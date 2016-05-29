@@ -48,6 +48,10 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
         var myResume = new Resume(raw.resume);
         myResume.person = myPerson;
 
+        // -- Message
+        var myMessage = new Message(raw.message);
+
+
 
 
         // ------- Record asynchronous all information into database
@@ -70,6 +74,12 @@ fs.readFile('scripts/data/l3-app.json', function(err, data)  {
                     callbackRecord(err, result);
                 })
             }
+            /*message : function(callbackRecord){
+                myMessage.save(function(err, result){
+                    callbackRecord(err, result);
+                })
+            }*/
+
         }, function(err, result){
 
             if(err){
